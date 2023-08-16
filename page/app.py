@@ -7,8 +7,8 @@ import model.file
 
 ### Read file
 st.header("Upload File")
-st.caption("Please upload the csv file, colunms titles = [shop_id, item_id, model_id, promotion_stock, (promotion_price)]")
-input_csv_file =  st.file_uploader("File：", type = 'csv', help= "Please upload the csv file, colunms titles = [shop_id, item_id, model_id, promotion_stock, (promotion_price)]")
+st.caption("Please upload the csv file, colunms titles = [shop_id, item_id]")
+input_csv_file =  st.file_uploader("File：", type = 'csv', help= "Please upload the csv file, colunms titles = [shop_id, item_id]")
 
 
 ### Display table
