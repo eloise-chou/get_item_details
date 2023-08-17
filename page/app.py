@@ -14,12 +14,12 @@ input_csv_file =  st.file_uploader("File：", type = 'csv', help= "Please upload
 ### Display table
 if input_csv_file is not None:
     df = pd.read_csv(input_csv_file)
+    unique_df = df.drop_duplicates(subset = ['shop_id', 'item_id'])
 
-    st.write(df)
+    st.write(unique_df)
 ### Button -> Fetch and Check 
 
 if st.button("Check"):
-    unique_df = df.drop_duplicates(subset = ['shop_id', 'item_id'])
     fetched_df = unique_df.copy()
 
     total_num = len(fetched_df)
