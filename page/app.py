@@ -6,8 +6,8 @@ from model.data_handle import df_column_to_item_details
 import model.file
 
 ### Read file
-st.header("Upload File")
-st.caption("Please upload the csv file, colunms titles = [shop_id, item_id]")
+st.header("Get item details")
+st.caption("Please remove duplicates before upload the csv file, colunms titles = [shop_id, item_id]")
 input_csv_file =  st.file_uploader("File：", type = 'csv', help= "Please upload the csv file, colunms titles = [shop_id, item_id]")
 
 
@@ -33,8 +33,8 @@ if st.button("Check"):
 
         item_details = df_column_to_item_details(row)
         item_df = pd.DataFrame(item_details)
-        combined_data = combined_data.append(item_df, ignore_index=True)
-
+        # combined_data = combined_data.append(item_df, ignore_index=True)
+        combined_data = pd.concat([combined_data, item_df], ignore_index = True)
 
 ## Display new table
 
