@@ -40,8 +40,7 @@ if st.button("Check"):
 
 ## Display new table
 
-    fetched_df = combined_data
-    fetched_df
+    combined_data
 
 
 ### 下載 Logger 報告
@@ -49,7 +48,7 @@ if st.button("Check"):
     today_date = datetime.today().strftime('%Y-%m-%d %H-%M-%S')
     st.download_button(
         label       = "Download Product Check Report",
-        data        = model.file.df_to_csv_utf8(fetched_df),
+        data        = model.file.df_to_csv_utf8(combined_data),
         file_name   = f"{today_date}_checked.csv",
         mime        = 'text/csv'
     )
