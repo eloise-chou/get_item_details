@@ -8,7 +8,8 @@ from functools import lru_cache
 import logging
 
 logger = logging.getLogger('Shopee_API')
-API_URL = "https://shopee.sg/api/v4/pdp/get_pc"
+# API_URL = "https://shopee.sg/api/v4/pdp/get_pc"
+API_URL = "https://shopee.tw/api/v4/pdp/get_pc"
 
 def wait_for_some_second(sec :float = 1.0):
     def fn_decorator(fn):
@@ -69,25 +70,6 @@ def get_model_list(shopee_api_return_dict:Dict[str, Any]) -> list:
     except KeyError as ke:
         raise ke
     
-# def get_modelid_stock_from_dict(shopee_api_return_dict:Dict[str, Any]) -> int:
-#     """    
-#     Returns the value associated with the 'normal_stock' key from the
-#     provided Shopee API response dictionary.
-#     """
-#     try:
-#         return shopee_api_return_dict['data']['item']['item_status']
-#     except KeyError as ke:
-#         raise ke
-
-# def get_current_price_from_dict(shopee_api_return_dict:Dict[str, Any]) -> int:
-#     """    
-#     Returns the value associated with the 'display_price' key from the
-#     provided Shopee API response dictionary.
-#     """
-#     try:
-#         return shopee_api_return_dict['selected_price_and_stock']['display_price']
-#     except KeyError as ke:
-#         raise ke
     
 @wait_for_some_second(sec = 1)
 def get_current_item_details(shop_id:int, item_id:int) -> list:
