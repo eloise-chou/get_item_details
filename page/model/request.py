@@ -9,7 +9,8 @@ import logging
 
 logger = logging.getLogger('Shopee_API')
 # API_URL = "https://shopee.sg/api/v4/pdp/get_pc"
-API_URL = "https://shopee.tw/api/v4/pdp/get_pc"
+# API_URL = "https://shopee.tw/api/v4/pdp/get_pc"
+API_URL = "https://shopee.my/api/v4/pdp/get_pc"
 
 def wait_for_some_second(sec :float = 1.0):
     def fn_decorator(fn):
@@ -46,6 +47,8 @@ def get_model_list(shopee_api_return_dict:Dict[str, Any]) -> list:
     Returns the value associated with the ['data']['item']['models'] key from the
     provided Shopee API response dictionary.
     """
+
+    item_status = shopee_api_return_dict['data']['item']['item_status']
     model_info_list = []
     
     try:
@@ -53,7 +56,7 @@ def get_model_list(shopee_api_return_dict:Dict[str, Any]) -> list:
         for model in model_list:
             # if need item_id, add here
             model_id = model['model_id']
-            model_status = model['status']
+            model_status = item_status
             model_stock = model['stock']
             model_price = model['price']
 
