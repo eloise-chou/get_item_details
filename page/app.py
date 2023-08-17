@@ -15,6 +15,7 @@ input_csv_file =  st.file_uploader("File：", type = 'csv', help= "Please upload
 if input_csv_file is not None:
     df = pd.read_csv(input_csv_file)
     unique_df = df.drop_duplicates(subset = ['shop_id', 'item_id'])
+    unique_df = unique_df.reset_index(drop = True)
 
     st.write(unique_df)
 ### Button -> Fetch and Check 
