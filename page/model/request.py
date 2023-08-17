@@ -21,14 +21,14 @@ def wait_for_some_second(sec :float = 1.0):
         return waited_function
     return fn_decorator
 
-def get_param_dict(item_id:int , shop_id:int) :
+def get_param_dict(shop_id:int, item_id:int) :
     """    
     Returns a dictionary with keys 'item_id', 'shop_id' and
     their corresponding integer values.
     """
-    return dict(item_id=item_id, shop_id=shop_id)
+    return dict(shop_id=shop_id, item_id=item_id)
 
-@lru_cache(maxsize=None)
+
 def get_shopee_api_dict(params) -> Dict[str, Any]:
     """    
     Returns a dictionary with data obtained from a GET request to Shopee
@@ -90,13 +90,13 @@ def get_model_list(shopee_api_return_dict:Dict[str, Any]) -> list:
 #         raise ke
     
 @wait_for_some_second(sec = 1)
-def get_current_item_details(item_id:int , shop_id:int) -> list:
+def get_current_item_details(shop_id:int, item_id:int) -> list:
     """
     Returns the value of the 'normal_stock' key from the Shopee API response
     dictionary obtained using the provided
     item_id, model_id, and shop_id parameters.
     """
-    params = get_param_dict(item_id , shop_id)
+    params = get_param_dict(shop_id, item_id)
     request_dict = get_shopee_api_dict(params=params)
     try:
         current_item_details =  get_model_list(request_dict)
