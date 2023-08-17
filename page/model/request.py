@@ -15,7 +15,7 @@ def wait_for_some_second(sec :float = 1.0):
         def waited_function(*args, **kargs):
             import time 
             time.sleep(sec)
-            print(f"Dealing with ID = {kargs.get('model_id', None)}")
+            print(f"Dealing with ID = {kargs.get('item_id', None)}")
             result = fn(*args, **kargs)
             return result
         return waited_function
