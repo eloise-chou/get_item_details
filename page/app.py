@@ -19,7 +19,8 @@ if input_csv_file is not None:
 ### Button -> Fetch and Check 
 
 if st.button("Check"):
-    fetched_df = df.copy()
+    unique_df = df.drop_duplicates(subset = ['shop_id', 'item_id'])
+    fetched_df = unique_df.copy()
 
     total_num = len(fetched_df)
     df_fetch_progress_bar = st.progress(0, text="Processing Progress")
