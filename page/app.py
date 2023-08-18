@@ -18,6 +18,16 @@ if input_csv_file is not None:
     unique_df = unique_df.reset_index(drop = True)
 
     st.write(unique_df)
+
+### Select country
+api_url_options = {
+    "Taiwan": "https://shopee.tw/api/v4/pdp/get_pc",
+    "Singapore": "https://shopee.sg/api/v4/pdp/get_pc",
+    "Malaysia": "https://shopee.my/api/v4/pdp/get_pc",
+}
+
+selected_api = st.selectbox("Select API URL:", list(api_url_options.keys()))
+
 ### Button -> Fetch and Check 
 
 if st.button("Check"):
@@ -33,7 +43,7 @@ if st.button("Check"):
         current_item_id = row['item_id']
         df_fetch_progress_bar.progress(percent_complete, text= f"Processing Progress：{current_item_id:,}" )
 
-        item_details = df_column_to_item_details(row)
+        item_details = df_column_to_item_details(row, selected_api)
         item_df = pd.DataFrame(item_details)
         combined_data = pd.concat([combined_data, item_df], ignore_index = True)
 

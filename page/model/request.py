@@ -8,9 +8,6 @@ from functools import lru_cache
 import logging
 
 logger = logging.getLogger('Shopee_API')
-# API_URL = "https://shopee.sg/api/v4/pdp/get_pc"
-# API_URL = "https://shopee.tw/api/v4/pdp/get_pc"
-API_URL = "https://shopee.my/api/v4/pdp/get_pc"
 
 def wait_for_some_second(sec :float = 1.0):
     def fn_decorator(fn):
@@ -31,7 +28,7 @@ def get_param_dict(shop_id:int, item_id:int) :
     return dict(shop_id=shop_id, item_id=item_id)
 
 
-def get_shopee_api_dict(params) -> Dict[str, Any]:
+def get_shopee_api_dict(params, api_url: str) -> Dict[str, Any]:
     """    
     Returns a dictionary with data obtained from a GET request to Shopee
     API using the provided parameters.
@@ -39,7 +36,7 @@ def get_shopee_api_dict(params) -> Dict[str, Any]:
     my_headers = {
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36',
     }
-    req = rq.get(API_URL, params=params, headers=my_headers)
+    req = rq.get(api_url, params=params, headers=my_headers)
     return req.json()
 
 def get_model_list(shopee_api_return_dict:Dict[str, Any]) -> list:
@@ -75,14 +72,14 @@ def get_model_list(shopee_api_return_dict:Dict[str, Any]) -> list:
     
     
 @wait_for_some_second(sec = 1)
-def get_current_item_details(shop_id:int, item_id:int) -> list:
+def get_current_item_details(shop_id:int, item_id:int, api_url: str) -> list:
     """
     Returns the value of the 'normal_stock' key from the Shopee API response
     dictionary obtained using the provided
     item_id, model_id, and shop_id parameters.
     """
     params = get_param_dict(shop_id, item_id)
-    request_dict = get_shopee_api_dict(params=params)
+    request_dict = get_shopee_api_dict(params = params, api_url = api_url)
     try:
         current_item_details =  get_model_list(request_dict)
         return current_item_details

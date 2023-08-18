@@ -8,13 +8,14 @@ logger = logging.getLogger('Shopee_API')
 logger.setLevel(logging.WARNING)
 
 
-def df_column_to_item_details(data: pd.Series) -> list:
+def df_column_to_item_details(data: pd.Series, api_url: str) -> list:
     try:
         shop_id     :int = data["shop_id"]
         item_id     :int = data["item_id"]
         item_details = get_current_item_details(
             shop_id     = shop_id,
             item_id     = item_id,
+            api_url     = api_url
         )
         return item_details
     except Exception as e:
