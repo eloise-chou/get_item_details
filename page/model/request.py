@@ -54,18 +54,20 @@ def get_model_list(shopee_api_return_dict:Dict[str, Any]) -> list:
         model_list = shopee_api_return_dict['data']['item']['models']
         for model in model_list:
             # if need item_id, add here
-            shop_id = shop_id
-            item_id = item_id
-            model_id = model['model_id']
+            shop_id      = shop_id
+            item_id      = item_id
+            model_id     = model['model_id']
             model_status = item_status
-            model_stock = model['stock']
-            model_price = model['price']
+            model_stock  = model['stock']
+            model_price  = model['price']
 
             model_info = {
+                "shop_id" : shop_id,
+                "item_id" : item_id,
                 "model_id": model_id,
-                "status": model_status,
-                "stock": model_stock,
-                "price": model_price / 100_000 #/100000 because the orig price is somehow bluffed
+                "status"  : model_status,
+                "stock"   : model_stock,
+                "price"   : model_price / 100_000 #/100000 because the orig price is somehow bluffed
             }
 
             model_info_list.append(model_info)
