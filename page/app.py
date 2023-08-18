@@ -21,12 +21,13 @@ if input_csv_file is not None:
 
 ### Select country
 api_url_options = {
-    "Taiwan": "https://shopee.tw/api/v4/pdp/get_pc",
-    "Singapore": "https://shopee.sg/api/v4/pdp/get_pc",
-    "Malaysia": "https://shopee.my/api/v4/pdp/get_pc",
+    "TW": "https://shopee.tw/api/v4/pdp/get_pc",
+    "SG": "https://shopee.sg/api/v4/pdp/get_pc",
+    "MY": "https://shopee.my/api/v4/pdp/get_pc",
 }
 
-selected_api = st.selectbox("Select API URL:", list(api_url_options.keys()))
+selected_country = st.selectbox("Select Country:", list(api_url_options.keys()))
+selected_api = api_url_options[selected_country]
 
 ### Button -> Fetch and Check 
 
