@@ -45,8 +45,8 @@ def get_model_list(shopee_api_return_dict:Dict[str, Any]) -> list:
     provided Shopee API response dictionary.
     """
 
-    shop_id = shopee_api_return_dict['data']['item']['shpo_id']
-    item_id = shopee_api_return_dict['data']['item']['item_id']
+    shop_id     = shopee_api_return_dict['data']['item']['shpo_id']
+    item_id     = shopee_api_return_dict['data']['item']['item_id']
     item_status = shopee_api_return_dict['data']['item']['item_status']
     model_info_list = []
     

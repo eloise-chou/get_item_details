@@ -10,8 +10,8 @@ logger.setLevel(logging.WARNING)
 
 def df_column_to_item_details(data: pd.Series, api_url: str) -> list:
     try:
-        shop_id     :int = data["shop_id"]
-        item_id     :int = data["item_id"]
+        shop_id    :int = data["shop_id"]
+        item_id    :int = data["item_id"]
         item_details = get_current_item_details(
             shop_id     = shop_id,
             item_id     = item_id,
