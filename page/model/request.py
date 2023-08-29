@@ -55,7 +55,7 @@ def get_model_list(shopee_api_return_dict:Dict[str, Any]) -> list:
         for model in model_list:
             # if need item_id, add here
             # shop_id      = shop_id
-            # item_id      = item_id
+            item_id      = model['item_id']
             model_id     = model['model_id']
             model_status = item_status
             model_stock  = model['stock']
@@ -63,7 +63,7 @@ def get_model_list(shopee_api_return_dict:Dict[str, Any]) -> list:
 
             model_info = {
                 # "shop_id" : shop_id,
-                # "item_id" : item_id,
+                "item_id" : item_id,
                 "model_id": model_id,
                 "status"  : model_status,
                 "stock"   : model_stock,
