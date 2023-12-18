@@ -20,7 +20,7 @@ def df_column_to_item_details(data: pd.Series, api_url: str) -> list:
         return item_details
     except Exception as e:
         logger.warning(e)
-        return [-1, -1, -1, -1]
+        return [-1, -1, -1, -1, -1, -1]
 
 
 # def item_detail_to_df(data: pd.Series) -> pd.DataFrame:

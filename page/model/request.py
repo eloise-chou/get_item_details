@@ -57,6 +57,7 @@ def get_model_list(shopee_api_return_dict:Dict[str, Any]) -> list:
             # shop_id      = shop_id
             item_id      = model['item_id']
             model_id     = model['model_id']
+            model_name   = model['name']
             model_status = item_status
             model_stock  = model['stock']
             model_price  = model['price']
@@ -65,6 +66,7 @@ def get_model_list(shopee_api_return_dict:Dict[str, Any]) -> list:
                 # "shop_id" : shop_id,
                 "item_id" : item_id,
                 "model_id": model_id,
+                "model_name" : model_name,
                 "status"  : model_status,
                 "stock"   : model_stock,
                 "price"   : model_price / 100_000 #/100000 because the orig price is somehow bluffed
